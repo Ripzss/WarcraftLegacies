@@ -32,14 +32,14 @@ namespace WarcraftLegacies.Source.Quests.Skywall
     /// <param name="invasionVictim">The faction that the invasion will primarily affect.</param>
     /// <param name="secondaryInvasionFaction">The faction that will gain some of the fringe benefits of the plague.</param>
     /// /// <param name="sulfuron">The base near Capital Palace.</param>
-    public QuestFirelandInvasion(InvasionParameters invasionParameters, Faction invasionVictim,
+    public QuestFirelandInvasion(Faction invasionVictim,
       Faction secondaryInvasionFaction, Rectangle sulfuron) : base(
       "Fireland Invasion",
       "The elemental plane has launched a massive invasion at the world tree.",
       @"ReplaceableTextures\CommandButtons\BTNFireLandStrike.blp")
     {
-      _invasionVictim = invasionVictim;
-      _invasionParameters = invasionParameters;
+      //_invasionVictim = invasionVictim;
+      //_invasionParameters = invasionParameters;
       _secondaryInvasionFaction = secondaryInvasionFaction;
       AddObjective(new ObjectiveEitherOf(
         new ObjectiveResearch(UPGRADE_RSW5_FIRELAND_INVASION_SKYWALL, FourCC("nELC")),
@@ -63,9 +63,9 @@ namespace WarcraftLegacies.Source.Quests.Skywall
     {
       completingFaction.ModObjectLimit(UPGRADE_RSW5_FIRELAND_INVASION_SKYWALL, -Faction.UNLIMITED);
       if (completingFaction.Player != null)
-        SpawnArmies(completingFaction);
+        //SpawnArmies(completingFaction);
 
-      ResetVictimControlPointLevel();
+      //ResetVictimControlPointLevel();
       //PresentInvasionDialogs();
       RescueBases(completingFaction);
 
@@ -89,44 +89,44 @@ namespace WarcraftLegacies.Source.Quests.Skywall
       whichFaction.ModObjectLimit(UPGRADE_RSW5_FIRELAND_INVASION_SKYWALL, Faction.UNLIMITED);
 
     
-    private void SpawnArmies(Faction completingFaction)
-    {
-      var primaryInvasionPlayer = completingFaction.ScoreStatus != ScoreStatus.Defeated && completingFaction.Player != null
-        ? completingFaction.Player
-        : Player(PLAYER_NEUTRAL_AGGRESSIVE);
+    //private void SpawnArmies(Faction completingFaction)
+    //{
+    //  var primaryInvasionPlayer = completingFaction.ScoreStatus != ScoreStatus.Defeated && completingFaction.Player != null
+    //    ? completingFaction.Player
+    //    : Player(PLAYER_NEUTRAL_AGGRESSIVE);
       
-      var secondaryInvasionPlayer = _secondaryInvasionFaction.ScoreStatus != ScoreStatus.Defeated && _secondaryInvasionFaction.Player != null
-        ? _secondaryInvasionFaction.Player
-        : Player(PLAYER_NEUTRAL_AGGRESSIVE);
+    //  var secondaryInvasionPlayer = _secondaryInvasionFaction.ScoreStatus != ScoreStatus.Defeated && _secondaryInvasionFaction.Player != null
+    //    ? _secondaryInvasionFaction.Player
+    //    : Player(PLAYER_NEUTRAL_AGGRESSIVE);
 
-      foreach (var invasionRect in _invasionParameters.InvasionRects)
-      {
-        var position = invasionRect.GetRandomPoint();
-        position.RemoveDestructablesInRadius(250f);
+    //  foreach (var invasionRect in _invasionParameters.InvasionRects)
+    //  {
+    //    var position = invasionRect.GetRandomPoint();
+    //    position.RemoveDestructablesInRadius(250f);
 
-        CreateUnit(secondaryInvasionPlayer, UNIT_U019_WORKER_C_THUN_WORKER, position.X, position.Y, 0);
+    //    CreateUnit(secondaryInvasionPlayer, UNIT_U019_WORKER_C_THUN_WORKER, position.X, position.Y, 0);
 
-        var attackTarget = _invasionParameters.AttackTargets
-          .OrderBy(x => MathEx.GetDistanceBetweenPoints(position, x))
-          .First();
+    //    var attackTarget = _invasionParameters.AttackTargets
+    //      .OrderBy(x => MathEx.GetDistanceBetweenPoints(position, x))
+    //      .First();
 
-        foreach (var parameter in _invasionParameters.InvasionArmySummonParameters)
-        foreach (var unit in CreateUnits(primaryInvasionPlayer, parameter.SummonUnitTypeId,
-                   position.X, position.Y, 0, parameter.SummonCount))
-        {
-          if (!unit.IsType(UNIT_TYPE_PEON))
-            unit.IssueOrder(OrderId("attack"), attackTarget);
-        }
-      }
-    }
+    //    foreach (var parameter in _invasionParameters.InvasionArmySummonParameters)
+    //    foreach (var unit in CreateUnits(primaryInvasionPlayer, parameter.SummonUnitTypeId,
+    //               position.X, position.Y, 0, parameter.SummonCount))
+    //    {
+    //      if (!unit.IsType(UNIT_TYPE_PEON))
+    //        unit.IssueOrder(OrderId("attack"), attackTarget);
+    //    }
+    //  }
+    //}
     
-    private void ResetVictimControlPointLevel()
-    {
-      if (_invasionVictim.Player == null) 
-        return;
+    //private void ResetVictimControlPointLevel()
+    //{
+    //  if (_invasionVictim.Player == null) 
+    //    return;
       
-      foreach (var controlPoint in _invasionVictim.Player.GetControlPoints())
-        controlPoint.ControlLevel = 0;
-    }
+    //  foreach (var controlPoint in _invasionVictim.Player.GetControlPoints())
+    //    controlPoint.ControlLevel = 0;
+    //}
   }
 }

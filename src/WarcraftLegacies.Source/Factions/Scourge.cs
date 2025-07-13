@@ -372,32 +372,31 @@ namespace WarcraftLegacies.Source.Factions
 
     private void RegisterLordaeronLegionRelatedQuests(Lordaeron lordaeron, Legion legion)
     {
-      var plagueParameters = new PlagueParameters();
-      plagueParameters.PlagueRects = new List<Rectangle>
-      {
-        Regions.Plague_1,
-        Regions.Plague_2,
-        Regions.Plague_3,
-        Regions.Plague_4,
-        Regions.Plague_5,
-        Regions.Plague_6,
-        Regions.Plague_7
-      };
-      plagueParameters.PlagueArmySummonParameters = new List<PlagueArmySummonParameter>
-      {
-        new(1, UNIT_UACO_ACOLYTE_SCOURGE_WORKER),
-        new(2, UNIT_UGHO_GHOUL_SCOURGE),
-        new(2, UNIT_UCRY_CRYPT_FIEND_SCOURGE),
-        new(2, UNIT_UABO_ABOMINATION_SCOURGE),
-      };
-      plagueParameters.AttackTargets = new List<Point>
-      {
-        new Point(9041, 8036),
-        new Point(13825, 12471),
-        new Point(9418, 5396)
-      };
-      
-      AddQuest(new QuestPlague(plagueParameters, lordaeron, legion, Regions.DeathknellUnlock,
+    //  var plagueParameters = new PlagueParameters();
+    //  plagueParameters.PlagueRects = new List<Rectangle>
+    //  {
+    //    Regions.Plague_1,
+    //    Regions.Plague_2,
+    //    Regions.Plague_3,
+    //    Regions.Plague_4,
+    //    Regions.Plague_5,
+    //    Regions.Plague_6,
+    //    Regions.Plague_7
+    //  };
+    //  plagueParameters.PlagueArmySummonParameters = new List<PlagueArmySummonParameter>
+    //  {
+    //    new(1, UNIT_UACO_ACOLYTE_SCOURGE_WORKER),
+    //    new(2, UNIT_UGHO_GHOUL_SCOURGE),
+    //    new(2, UNIT_UCRY_CRYPT_FIEND_SCOURGE),
+    //    new(2, UNIT_UABO_ABOMINATION_SCOURGE),
+    //  };
+    //  plagueParameters.AttackTargets = new List<Point>
+    //  {
+    //    new Point(9041, 8036),
+    //    new Point(13825, 12471),
+    //    new Point(9418, 5396)
+    //  };
+      AddQuest(new QuestPlague(lordaeron, legion, Regions.DeathknellUnlock,
         Regions.StratholmeScourgeBase, Regions.CaerDarrow));
     }
   }

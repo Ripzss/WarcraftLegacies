@@ -22,7 +22,7 @@ namespace WarcraftLegacies.Source.Quests.Scourge
     private readonly Faction _plagueVictim;
    
     private readonly Faction _secondaryPlagueFaction;
-    private readonly PlagueParameters _plagueParameters;
+    //private readonly PlagueParameters _plagueParameters;
 
     private readonly List<unit> _deathknellUnits;
     private readonly List<unit> _coastUnits;
@@ -37,19 +37,19 @@ namespace WarcraftLegacies.Source.Quests.Scourge
     /// /// <param name="coast">The base near Stratholme coast.</param>
     /// /// <param name="deathknell">The base near Capital Palace.</param>
     /// /// <param name="scholomance">The base at Caer Darrow.</param>
-    public QuestPlague(PlagueParameters plagueParameters, Faction plagueVictim,
+    public QuestPlague(Faction plagueVictim,
       Faction secondaryPlagueFaction, Rectangle deathknell, Rectangle coast, Rectangle scholomance) : base(
       "Plague of Undeath",
       "The Cult of the Damned is prepared to unleash a devastating zombifying plague across the lands of Lordaeron.",
       @"ReplaceableTextures\CommandButtons\BTNPlagueBarrel.blp")
     {
       _plagueVictim = plagueVictim;
-      _plagueParameters = plagueParameters;
+      //_plagueParameters = plagueParameters;
       _secondaryPlagueFaction = secondaryPlagueFaction;
       AddObjective(new ObjectiveEitherOf(
         new ObjectiveResearch(UPGRADE_R06I_PLAGUE_OF_UNDEATH_SCOURGE, FourCC("u000")),
         new ObjectiveTime(660)));
-      AddObjective(new ObjectiveTime(480));
+      AddObjective(new ObjectiveTime(60));
       _deathknellUnits = deathknell.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
       _scholomanceUnits = scholomance.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
       _coastUnits = coast.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
@@ -70,10 +70,10 @@ namespace WarcraftLegacies.Source.Quests.Scourge
     {
       completingFaction.ModObjectLimit(UPGRADE_R06I_PLAGUE_OF_UNDEATH_SCOURGE, -Faction.UNLIMITED);
       if (completingFaction.Player != null)
-        SpawnArmies(completingFaction);
+        //SpawnArmies(completingFaction);
 
-      ResetVictimControlPointLevel();
-      KillVillagers();
+      //ResetVictimControlPointLevel();
+      //KillVillagers();
       PresentInvasionDialogs();
       RescueBases(completingFaction);
       RegisterRocks();
@@ -124,63 +124,63 @@ namespace WarcraftLegacies.Source.Quests.Scourge
     protected override void OnAdd(Faction whichFaction) =>
       whichFaction.ModObjectLimit(UPGRADE_R06I_PLAGUE_OF_UNDEATH_SCOURGE, Faction.UNLIMITED);
 
-    private static void KillVillagers()
-    {
-      var villagerUnitTypeIds = new List<int>
-      {
-        FourCC("nvlw"),
-        FourCC("nvl2"),
-        FourCC("nvil"),
-        FourCC("nvlk"),
-        FourCC("nvk2")
-      };
+    //private static void KillVillagers()
+    //{
+    //  var villagerUnitTypeIds = new List<int>
+    //  {
+    //    FourCC("nvlw"),
+    //    FourCC("nvl2"),
+    //    FourCC("nvil"),
+    //    FourCC("nvlk"),
+    //    FourCC("nvk2")
+    //  };
 
-      var villagers = GlobalGroup
-        .EnumUnitsOfPlayer(Player(PLAYER_NEUTRAL_PASSIVE))
-        .Where(x => villagerUnitTypeIds.Contains(x.GetTypeId()));
+    //  var villagers = GlobalGroup
+    //    .EnumUnitsOfPlayer(Player(PLAYER_NEUTRAL_PASSIVE))
+    //    .Where(x => villagerUnitTypeIds.Contains(x.GetTypeId()));
       
-      foreach (var villager in villagers) 
-        villager.Kill();
-    }
+    //  foreach (var villager in villagers) 
+    //    villager.Kill();
+    //}
     
-    private void SpawnArmies(Faction completingFaction)
-    {
-      var primaryPlaguePlayer = completingFaction.ScoreStatus != ScoreStatus.Defeated && completingFaction.Player != null
-        ? completingFaction.Player
-        : Player(PLAYER_NEUTRAL_AGGRESSIVE);
+    //private void SpawnArmies(Faction completingFaction)
+    //{
+    //  var primaryPlaguePlayer = completingFaction.ScoreStatus != ScoreStatus.Defeated && completingFaction.Player != null
+    //    ? completingFaction.Player
+    //    : Player(PLAYER_NEUTRAL_AGGRESSIVE);
       
-      var secondaryPlaguePlayer = _secondaryPlagueFaction.ScoreStatus != ScoreStatus.Defeated && _secondaryPlagueFaction.Player != null
-        ? _secondaryPlagueFaction.Player
-        : Player(PLAYER_NEUTRAL_AGGRESSIVE);
+    //  var secondaryPlaguePlayer = _secondaryPlagueFaction.ScoreStatus != ScoreStatus.Defeated && _secondaryPlagueFaction.Player != null
+    //    ? _secondaryPlagueFaction.Player
+    //    : Player(PLAYER_NEUTRAL_AGGRESSIVE);
 
-      foreach (var plagueRect in _plagueParameters.PlagueRects)
-      {
-        var position = plagueRect.GetRandomPoint();
-        position.RemoveDestructablesInRadius(250f);
+    //  foreach (var plagueRect in _plagueParameters.PlagueRects)
+    //  {
+    //    var position = plagueRect.GetRandomPoint();
+    //    position.RemoveDestructablesInRadius(250f);
 
-        CreateUnit(secondaryPlaguePlayer, UNIT_U00D_LEGION_HERALD_LEGION_WORKER, position.X, position.Y, 0);
+    //    CreateUnit(secondaryPlaguePlayer, UNIT_U00D_LEGION_HERALD_LEGION_WORKER, position.X, position.Y, 0);
 
-        var attackTarget = _plagueParameters.AttackTargets
-          .OrderBy(x => MathEx.GetDistanceBetweenPoints(position, x))
-          .First();
+    //    var attackTarget = _plagueParameters.AttackTargets
+    //      .OrderBy(x => MathEx.GetDistanceBetweenPoints(position, x))
+    //      .First();
 
-        foreach (var parameter in _plagueParameters.PlagueArmySummonParameters)
-        foreach (var unit in CreateUnits(primaryPlaguePlayer, parameter.SummonUnitTypeId,
-                   position.X, position.Y, 0, parameter.SummonCount))
-        {
-          if (!unit.IsType(UNIT_TYPE_PEON))
-            unit.IssueOrder(OrderId("attack"), attackTarget);
-        }
-      }
-    }
+    //    foreach (var parameter in _plagueParameters.PlagueArmySummonParameters)
+    //    foreach (var unit in CreateUnits(primaryPlaguePlayer, parameter.SummonUnitTypeId,
+    //               position.X, position.Y, 0, parameter.SummonCount))
+    //    {
+    //      if (!unit.IsType(UNIT_TYPE_PEON))
+    //        unit.IssueOrder(OrderId("attack"), attackTarget);
+    //    }
+    //  }
+    //}
     
-    private void ResetVictimControlPointLevel()
-    {
-      if (_plagueVictim.Player == null) 
-        return;
+    //private void ResetVictimControlPointLevel()
+    //{
+    //  if (_plagueVictim.Player == null) 
+    //    return;
       
-      foreach (var controlPoint in _plagueVictim.Player.GetControlPoints())
-        controlPoint.ControlLevel = 0;
-    }
+    //  foreach (var controlPoint in _plagueVictim.Player.GetControlPoints())
+    //    controlPoint.ControlLevel = 0;
+    //}
   }
 }

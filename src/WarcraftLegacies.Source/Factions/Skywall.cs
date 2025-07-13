@@ -95,7 +95,7 @@ namespace WarcraftLegacies.Source.Factions
 
       };
 
-      AddQuest(new QuestFirelandInvasion(invasionParameters, druids, ahnqiraj, Regions.SulfuronSpire));
+      AddQuest(new QuestFirelandInvasion(druids, ahnqiraj, Regions.SulfuronSpire));
     }
 
     private void RegisterResearches()
