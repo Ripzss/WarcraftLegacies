@@ -16,6 +16,8 @@
         <PackageReference Include="WCSharp.Missiles" Version="2.2.0" />
         <PackageReference Include="WCSharp.SaveLoad" Version="2.2.0" />
         <PackageReference Include="WCSharp.Shared" Version="2.2.0" />
+        <PackageReference Include="WCSharp.War3Net.Build" Version="5.7.2" />
+        <PackageReference Include="WCSharp.War3Net.Build.Core" Version="5.7.2" />
     </ItemGroup>
 
     <ItemGroup>

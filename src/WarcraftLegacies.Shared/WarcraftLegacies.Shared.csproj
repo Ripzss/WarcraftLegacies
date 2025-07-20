@@ -7,6 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="WCSharp.War3Net.Build" Version="5.7.2" />
+      <PackageReference Include="WCSharp.War3Net.Build.Core" Version="5.7.2" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\MacroTools.Shared\MacroTools.Shared.csproj" />
     </ItemGroup>
 
