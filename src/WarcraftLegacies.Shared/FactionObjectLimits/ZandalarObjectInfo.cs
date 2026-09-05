@@ -40,7 +40,7 @@ public static class ZandalarObjectInfo
       yield return new(UNIT_MD47_DIREHORN_ZANDALAR, 12);
       yield return new(UNIT_MD43_THRONE_OF_WAR_ZANDALAR, 3);
       //Specialist 2
-      yield return new(UNIT_MD44_RAVAGER_ZANDALAR, 12);
+      yield return new(UNIT_MD86_RAVAGER_ZANDALAR, 12);
       yield return new(UNIT_MD45_BEAR_RIDER_ZANDALAR, 6);
       yield return new(UNIT_MD46_WARLORD_ZANDALAR, 12);
       //Altar
