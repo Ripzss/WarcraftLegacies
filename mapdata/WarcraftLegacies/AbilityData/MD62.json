@@ -274,6 +274,11 @@
       "Id": "arut",
       "Type": 3,
       "Value": "Makes the hero Invulnreable for a certain time |n|cffffcc00Level 1|r - Duration 3 seconds|n|cffffcc00Level 2|r - Duration 4 seconds. |n|cffffcc00Level 3|r - Duration 5 seconds. |n|cffffcc00Level 4|r - Duration 6 seconds."
+    },
+    {
+      "Id": "arhk",
+      "Type": 3,
+      "Value": "W"
     }
   ]
 }
