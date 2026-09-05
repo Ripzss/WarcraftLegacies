@@ -37,8 +37,8 @@
   "Tileset": 89,
   "LoadingScreenBackgroundNumber": 99,
   "LoadingScreenPath": "",
-  "LoadingScreenText": "TRIGSTR_16579",
-  "LoadingScreenTitle": "TRIGSTR_16578",
+  "LoadingScreenText": "Determine the fate of Azeroth as one of 20 factions from the Warcraft universe.\r\n\r\nFounders: Lordsebas, YakaryBovine\r\nDevelopers: Technopig, Madsen, Vampirika\r\nProgrammers: alrun3\r\nDiscord link: https://discord.gg/4eGZnR5",
+  "LoadingScreenTitle": "Warcraft Legacies",
   "LoadingScreenSubtitle": "",
   "GameDataSet": 2,
   "PrologueScreenPath": "",
@@ -67,9 +67,9 @@
   "ScriptLanguage": 1,
   "SupportedModes": 1,
   "GameDataVersion": 1,
-  "ForceDefaultCameraZoom": 1250,
-  "ForceMaxCameraZoom": 1250,
-  "ForceMinCameraZoom": 1250,
+  "ForceDefaultCameraZoom": 0,
+  "ForceMaxCameraZoom": 0,
+  "ForceMinCameraZoom": 0,
   "Players": [
     {
       "Id": 0,
