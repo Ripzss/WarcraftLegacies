@@ -18,9 +18,8 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
   /// </summary>
   public sealed class QuestZulgurub : QuestData
   {
-    private const int _ZulgurubResearch = UPGRADE_MD99_QUEST_COMPLETED_HEART_OF_HAKKAR; // add the research for the new unit
     private const int _trollShrineId = UNIT_O043_SPIRIT_SPIRE_CREEP_MAGIC; // add the shrine for the new unit
-    private const int _ravagerId = UNIT_MD44_RAVAGER_ZANDALAR; //make the unit
+    private const int _ravagerId = UNIT_MD86_RAVAGER_ZANDALAR; //make the unit
     private int goldReward { get; set; }
 
     /// <summary>
@@ -31,7 +30,7 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
         @"ReplaceableTextures\CommandButtons\BTNTrollRavager.blp")
       {
         AddObjective(new ObjectiveControlCapital(Zulgurub, false));
-        ResearchId = UPGRADE_MD99_QUEST_COMPLETED_HEART_OF_HAKKAR;
+        ResearchId = UPGRADE_MDA0_QUEST_COMPLETED_HEART_OF_HAKKAR;
         goldReward = 250;
     }
 
@@ -54,9 +53,5 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
         Console.WriteLine("Invalid faction or player; cannot complete the quest.");
         return;
       }
-    }
-    protected override void OnAdd(Faction whichFaction)
-    {
-      whichFaction.ModObjectLimit(_ZulgurubResearch, Faction.Unlimited);
     }
 }

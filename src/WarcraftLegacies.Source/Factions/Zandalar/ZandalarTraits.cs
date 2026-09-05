@@ -12,6 +12,6 @@ public static class ZandalarTraits
     {
       DamageMultNonResistant = 4,
       DamageMultResistant = 1.5f
-    }, UNIT_MD44_RAVAGER_ZANDALAR);
+    }, UNIT_MD86_RAVAGER_ZANDALAR);
   }
 }
