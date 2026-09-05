@@ -7,7 +7,7 @@ public sealed class ZandalarLegends
 {
   public LegendaryHero Rastakhan { get; }
   public LegendaryHero Zul { get; }
-  public LegendaryHero Haakar { get; }
+  public LegendaryHero Hakkar { get; }
   public LegendaryHero Gahzrilla { get; }
   public Capital Zandalar { get; }
 
@@ -15,14 +15,13 @@ public sealed class ZandalarLegends
   {
     Zul = new LegendaryHero("Zul")
     {
-      UnitType = UNIT_MD39_ZANDALARI_PROPHET_ZANDALAR,
-      StartingXp = 1000
+      UnitType = UNIT_MD39_ZANDALARI_PROPHET_ZANDALAR
     };
 
     Gahzrilla = new LegendaryHero("Gahzrilla")
     {
       UnitType = UNIT_MD40_DEMIGOD_ZANDALAR,
-      StartingXp = 2800
+      StartingXp = 1800
     };
 
     Rastakhan = new LegendaryHero("Rastakhan")
@@ -31,9 +30,9 @@ public sealed class ZandalarLegends
       StartingXp = 3680
     };
 
-    Haakar = new LegendaryHero("Haakar")
+    Hakkar = new LegendaryHero("Hakkar")
     {
-      //UnitType = ,
+      UnitType = UNIT_MD61_DEMIGOD_OF_THE_TROLLS_ZANDALAR,
       StartingXp = 8800
     };
     Zandalar = new Capital
@@ -49,7 +48,7 @@ public sealed class ZandalarLegends
     LegendaryHeroManager.Register(Zul);
     LegendaryHeroManager.Register(Gahzrilla);
     LegendaryHeroManager.Register(Rastakhan);
-    //LegendaryHeroManager.Register();
+    LegendaryHeroManager.Register(Hakkar);
     CapitalManager.Register(Zandalar);
   }
 }

@@ -4,6 +4,7 @@ using MacroTools.Extensions;
 using MacroTools.Factions;
 using MacroTools.Legends;
 using MacroTools.Quests;
+using MacroTools.Researches;
 using WarcraftLegacies.Source.GameLogic.Rocks;
 using WarcraftLegacies.Source.Objectives.FactionBased;
 using WarcraftLegacies.Source.Objectives.LegendBased;
@@ -19,7 +20,6 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
 /// </summary>
 public sealed class QuestGundrak : QuestData
 {
-  private const int _gundrakResearch = UPGRADE_MD38_QUEST_COMPLETED_GUNDRAK;
   private const int _warlordId = UNIT_MD46_WARLORD_ZANDALAR;
   private const int _trollShrineId = UNIT_O043_SPIRIT_SPIRE_CREEP_MAGIC;
   private int goldReward { get; set; }
@@ -31,6 +31,7 @@ public sealed class QuestGundrak : QuestData
     @"ReplaceableTextures\CommandButtons\BTNTerrorTroll.blp")
   {
     AddObjective(new ObjectiveControlCapital(Gundrak, false));
+    ResearchId = UPGRADE_MD38_QUEST_COMPLETED_THE_DRAKKARI_FORTRESS;
     goldReward = 250;
   }
 
@@ -50,11 +51,5 @@ public sealed class QuestGundrak : QuestData
       Console.WriteLine("Invalid faction or player; cannot complete the quest.");
       return;
     }
-  }
-
-  /// <inheritdoc/>
-  protected override void OnAdd(Faction whichFaction)
-  {
-    whichFaction.ModObjectLimit(_gundrakResearch, Faction.Unlimited);
   }
 }
