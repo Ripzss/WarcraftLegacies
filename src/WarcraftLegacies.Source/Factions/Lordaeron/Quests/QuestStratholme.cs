@@ -21,11 +21,12 @@ public sealed class QuestStratholme : QuestData
   private readonly LegendaryHero _uther;
   private readonly Capital _stratholme;
   private readonly List<unit> _rescueUnits;
+  private readonly List<unit> _rescueUnits2;
 
   /// <summary>
   /// Initializes a new instance of the <see cref="QuestStratholme"/> class.
   /// </summary>
-  public QuestStratholme(Rectangle rescueRect, LegendaryHero arthas, LegendaryHero uther, Capital stratholme) : base(
+  public QuestStratholme(Rectangle rescueRect,Rectangle rescueRect2, LegendaryHero arthas, LegendaryHero uther, Capital stratholme) : base(
     "Blackrock and Roll",
     "The Blackrock clan has taken over Alterac, they must be eliminated for the safety of Lordaeron",
     @"ReplaceableTextures\CommandButtons\BTNChaosBlademaster.blp")
@@ -40,6 +41,7 @@ public sealed class QuestStratholme : QuestData
     AddObjective(new ObjectiveSelfExists());
 
     _rescueUnits = rescueRect.PrepareUnitsForRescue(RescuePreparationMode.HideNonStructures);
+    _rescueUnits2 = rescueRect2.PrepareUnitsForRescue(RescuePreparationMode.HideNonStructures);
     ResearchId = UPGRADE_R09E_QUEST_COMPLETED_BLACKROCK_AND_ROLL;
   }
 
@@ -54,6 +56,7 @@ public sealed class QuestStratholme : QuestData
       : completingFaction.Player;
 
     rescuer.RescueGroup(_rescueUnits);
+    rescuer.RescueGroup(_rescueUnits2);
     _arthas.AddUnitDependency(_stratholme.Unit);
   }
 
@@ -61,6 +64,7 @@ public sealed class QuestStratholme : QuestData
   protected override void OnComplete(Faction completingFaction)
   {
     completingFaction.Player.RescueGroup(_rescueUnits);
+    completingFaction.Player.RescueGroup(_rescueUnits2);
     _arthas.AddUnitDependency(_stratholme.Unit);
     _uther.AddUnitDependency(_stratholme.Unit);
   }

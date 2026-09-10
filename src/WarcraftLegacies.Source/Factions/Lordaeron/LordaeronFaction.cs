@@ -75,7 +75,7 @@ public sealed class LordaeronFaction : Faction
   private void RegisterQuests()
   {
     var questStrahnbrad = new QuestStrahnbrad(Regions.StrahnbradUnlock);
-    var questStratholme = new QuestStratholme(Regions.StratholmeUnlock, AllLegends.Lordaeron.Arthas, AllLegends.Lordaeron.Uther, AllLegends.Lordaeron.Stratholme);
+    var questStratholme = new QuestStratholme(Regions.StratholmeUnlock,Regions.Stratholmeunlock2, AllLegends.Lordaeron.Arthas, AllLegends.Lordaeron.Uther, AllLegends.Lordaeron.Stratholme);
     var questTyrHand = new QuestTyrHand(AllLegends.Lordaeron.Stratholme, Regions.TyrUnlock);
     AddQuest(new QuestHearthglen(Regions.Hearthglen));
     AddQuest(questStratholme);
