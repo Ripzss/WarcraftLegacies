@@ -11,8 +11,8 @@
 //  10	Empty
 //  11	Druids
 //  12	Black Empire
-//  13	Empty
-//  14	Exodar (turn into Exodar)
+//  13	Exodar
+//  14	Empty 
 //  15	Illidan/Sunfury
 //  16	Ahn'qiraj
 //  17  Empty Zandalar?
