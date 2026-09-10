@@ -27,7 +27,6 @@ public sealed class QuestPlague : QuestData
   private readonly PlagueParameters _plagueParameters;
 
   private readonly List<unit> _deathknellUnits;
-  private readonly List<unit> _coastUnits;
   private readonly List<unit> _scholomanceUnits;
 
   /// <summary>
@@ -113,7 +112,6 @@ public sealed class QuestPlague : QuestData
   private void RescueBases(Faction completingFaction)
   {
     completingFaction.Player.RescueGroup(_deathknellUnits);
-    completingFaction.Player.RescueGroup(_coastUnits);
     completingFaction.Player.RescueGroup(_scholomanceUnits);
   }
 
