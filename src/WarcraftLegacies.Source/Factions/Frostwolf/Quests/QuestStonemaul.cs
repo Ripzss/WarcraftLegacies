@@ -22,6 +22,8 @@ public sealed class QuestStonemaul : QuestData
     AddObjective(new ObjectiveExpire(8, Title));
     AddObjective(new ObjectiveSelfExists());
 
+    ResearchId = UPGRADE_R032_QUEST_COMPLETED_THE_DARKSPEAR_TROLLS;
+
     _rescueUnits = rescueRect.PrepareUnitsForRescue(RescuePreparationMode.HideNonStructures);
   }
 
