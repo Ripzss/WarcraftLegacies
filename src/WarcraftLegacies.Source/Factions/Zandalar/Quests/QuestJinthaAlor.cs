@@ -4,6 +4,7 @@ using MacroTools.Extensions;
 using MacroTools.Factions;
 using MacroTools.Legends;
 using MacroTools.Quests;
+using MacroTools.Researches;
 using WarcraftLegacies.Source.GameLogic.Rocks;
 using WarcraftLegacies.Source.Objectives.FactionBased;
 using WarcraftLegacies.Source.Objectives.LegendBased;
@@ -17,7 +18,6 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
   /// </summary>
   public sealed class QuestJinthaAlor : QuestData
   {
-    private const int _jinthaalorResearch = UPGRADE_MD37_QUEST_COMPLETED_JINTHAALOR;
     private const int _bearRiderId = UNIT_MD45_BEAR_RIDER_ZANDALAR;
     private const int _trollShrineId = UNIT_O043_SPIRIT_SPIRE_CREEP_MAGIC;
     private int goldReward { get; set; }
@@ -30,6 +30,7 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
       @"ReplaceableTextures\CommandButtons\BTNForestTrollShadowPriest.blp")
     {
       AddObjective(new ObjectiveControlCapital(Jinthaalor, false));
+      ResearchId = UPGRADE_MD37_QUEST_COMPLETED_THE_ANCIENT_EGG;
       goldReward = 250;
     }
 
@@ -50,9 +51,4 @@ namespace WarcraftLegacies.Source.Factions.Zandalar.Quests;
         return;
       }
     }
-    /// <inheritdoc/>
-    protected override void OnAdd(Faction whichFaction)
-      {
-        whichFaction.ModObjectLimit(_jinthaalorResearch, Faction.Unlimited);
-      }
   }

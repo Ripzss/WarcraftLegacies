@@ -10,7 +10,6 @@ using MacroTools.Quests;
 using MacroTools.Researches;
 using WarcraftLegacies.Shared.FactionObjectLimits;
 using WarcraftLegacies.Source.Factions.Lordaeron.Researches;
-using WarcraftLegacies.Source.Factions.Warsong.Mechanics;
 using WarcraftLegacies.Source.Factions.Warsong.Quests;
 using WarcraftLegacies.Source.Objectives.LegendBased;
 using WarcraftLegacies.Source.Setup;
@@ -22,7 +21,7 @@ namespace WarcraftLegacies.Source.Factions.Warsong;
 public sealed class WarsongFaction : Faction
 {
   /// <inheritdoc />
-  public WarsongFaction() : base("Warsong", playercolor.Red,
+  public WarsongFaction() : base("Warsong", playercolor.Orange,
     @"ReplaceableTextures\CommandButtons\BTNHellScream.blp")
   {
     TraditionalTeam = TeamSetup.Horde;
@@ -50,22 +49,12 @@ public sealed class WarsongFaction : Faction
   public override void OnRegistered()
   {
     RegisterObjectLevels();
-    ReplaceWithFactionUnits(this);
     RegisterQuests();
     RegisterDialogue();
     RegisterFlightPath();
     WarsongSpells.Setup();
     WarsongTraits.Setup();
-    BloodPactBattleSimulation.StartSimulation();
     SharedFactionConfigSetup.AddSharedFactionConfig(this);
-    Regions.BarrenAmbient2.CleanupHostileUnits();
-    Regions.AshenvaleCreeps.CleanupHostileUnits();
-    var thunderBluffUnit = AllPreplacedWidgets.Units.Get(UNIT_N03M_THUNDERBLUFF);
-    var whichPlayer = player.NeutralAggressive;
-    thunderBluffUnit.SetOwner(whichPlayer);
-    var echoIslesUnit = AllPreplacedWidgets.Units.Get(UNIT_N02V_ECHO_ISLES);
-    var whichPlayer1 = player.NeutralAggressive;
-    echoIslesUnit.SetOwner(whichPlayer1);
   }
 
   private void RegisterObjectLevels()
@@ -76,37 +65,17 @@ public sealed class WarsongFaction : Faction
 
   private void RegisterQuests()
   {
-    StartingQuest = AddQuest(new QuestGrom(AllLegends.Warsong.GromHellscream, AllLegends.Warsong.Gargok));
+    StartingQuest = AddQuest(new QuestCrossroads(Regions.Crossroads));
     AddQuest(new QuestOrgrimmar(Regions.Orgrimmar));
-    AddQuest(new QuestCrossroads(Regions.Crossroads));
+    AddQuest(new QuestLumberCamp(Regions.LumberCamp));
     AddQuest(new QuestRokhan(AllPreplacedWidgets.Units.Get(UNIT_MD25_DARKSPEAR_CHAMPION_WARSONG)));
+    AddQuest(new QuestBloodpact(AllLegends.Warsong.Mannoroth,AllLegends.Warsong.GromHellscream));
     AddQuest(new QuestGarrosh());
-    AddQuest(new QuestKillOldGods());
+    AddQuest(new QuestCaptureNordrassil(AllLegends.Druids.Nordrassil,AllLegends.Warsong.GromHellscream));
     AddQuest(new QuestWarsongHold());
     AddQuest(new QuestExtractSunwellVial(AllLegends.Quel.Sunwell, Artifacts.SunwellVial));
-    AddQuest(new QuestSubdueOgres(Regions.StonemaulKeep, AllLegends.Warsong, AllLegends.Warsong.GromHellscream));
-    AddQuest(new QuestSubdueTrolls(Regions.EchoUnlock, AllLegends.Warsong, AllLegends.Warsong.GromHellscream));
   }
 
-  private static void ReplaceWithFactionUnits(Faction pickedFaction)
-  {
-    if (pickedFaction == null)
-    {
-      throw new ArgumentNullException(nameof(pickedFaction), "pickedFaction cannot be null.");
-    }
-
-    FactionChoiceDialogPresenter.ReplaceRegionUnitsWithFactionEquivalents(Regions.ThunderBluff, pickedFaction);
-    FactionChoiceDialogPresenter.ReplaceRegionUnitsWithFactionEquivalents(Regions.EchoUnlock, pickedFaction);
-    FactionChoiceDialogPresenter.ReplaceRegionUnitsWithFactionEquivalents(Regions.Orgrimmar, pickedFaction);
-    FactionChoiceDialogPresenter.ReplaceRegionUnitsWithFactionEquivalents(Regions.Crossroads, pickedFaction);
-  }
-
-
-  public override void OnNotPicked()
-  {
-    Regions.StonemaulKeep.CleanupNeutralPassiveUnits();
-    base.OnNotPicked();
-  }
   private void RegisterDialogue()
   {
     TriggeredDialogueManager.Add(new TriggeredDialogue(

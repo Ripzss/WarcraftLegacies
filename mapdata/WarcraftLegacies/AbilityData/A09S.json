@@ -42,11 +42,6 @@
       "Value": 8
     },
     {
-      "Id": "areq",
-      "Type": 3,
-      "Value": "R01Q"
-    },
-    {
       "Id": "aart",
       "Type": 3,
       "Value": "ReplaceableTextures\\CommandButtons\\BTNHumanRein.blp"

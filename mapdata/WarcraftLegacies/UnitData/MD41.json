@@ -8,7 +8,7 @@
     {
       "Id": "uagp",
       "Type": 2,
-      "Value": 1.7
+      "Value": 2.65
     },
     {
       "Id": "ubs1",
@@ -37,7 +37,7 @@
     {
       "Id": "ua1c",
       "Type": 2,
-      "Value": 2
+      "Value": 1.8
     },
     {
       "Id": "udef",
@@ -45,7 +45,7 @@
     },
     {
       "Id": "ua1b",
-      "Value": 5
+      "Value": 10
     },
     {
       "Id": "udp1",
@@ -55,11 +55,11 @@
     {
       "Id": "uhab",
       "Type": 3,
-      "Value": "Aamk"
+      "Value": "ANbf,A06U,A066,MD57,Aamk"
     },
     {
       "Id": "uhpm",
-      "Value": 200
+      "Value": 300
     },
     {
       "Id": "uinp",
@@ -91,7 +91,7 @@
     {
       "Id": "ustp",
       "Type": 2,
-      "Value": 3.8
+      "Value": 2.9
     },
     {
       "Id": "uwal",
@@ -116,9 +116,14 @@
       "Value": "MD34"
     },
     {
+      "Id": "uhpr",
+      "Type": 2,
+      "Value": 2.5
+    },
+    {
       "Id": "uico",
       "Type": 3,
-      "Value": "ReplaceableTextures\\CommandButtons\\BTNForestTroll.blp"
+      "Value": "ReplaceableTextures\\CommandButtons\\BTNTrollConjurer.blp"
     },
     {
       "Id": "uawt",
@@ -138,7 +143,7 @@
     {
       "Id": "uhot",
       "Type": 3,
-      "Value": "W"
+      "Value": "E"
     },
     {
       "Id": "uimz",
@@ -178,7 +183,7 @@
     {
       "Id": "usnd",
       "Type": 3,
-      "Value": "Shaman"
+      "Value": "ForestTroll"
     },
     {
       "Id": "utip",
@@ -187,7 +192,7 @@
     },
     {
       "Id": "ubpx",
-      "Value": 1
+      "Value": 2
     }
   ]
 }

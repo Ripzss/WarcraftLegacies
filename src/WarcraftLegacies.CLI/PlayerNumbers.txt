@@ -3,7 +3,7 @@
 //  2   Quelthalas 
 //  3	Scourge
 //  4	Ironforge
-//  5	Empty
+//  5	Warsong
 //  6	Fel Horde
 //  7	Dalaran/Gilneas
 //  8	Skywall
@@ -11,8 +11,8 @@
 //  10	Empty
 //  11	Druids
 //  12	Black Empire
-//  13	Empty
-//  14	Exodar (turn into Exodar)
+//  13	Exodar
+//  14	Empty 
 //  15	Illidan/Sunfury
 //  16	Ahn'qiraj
 //  17  Empty Zandalar?

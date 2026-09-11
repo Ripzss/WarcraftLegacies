@@ -27,7 +27,6 @@ public sealed class QuestPlague : QuestData
   private readonly PlagueParameters _plagueParameters;
 
   private readonly List<unit> _deathknellUnits;
-  private readonly List<unit> _coastUnits;
   private readonly List<unit> _scholomanceUnits;
 
   /// <summary>
@@ -40,7 +39,7 @@ public sealed class QuestPlague : QuestData
   /// /// <param name="deathknell">The base near Capital Palace.</param>
   /// /// <param name="scholomance">The base at Caer Darrow.</param>
   public QuestPlague(PlagueParameters plagueParameters, Faction plagueVictim,
-    Faction secondaryPlagueFaction, Rectangle deathknell, Rectangle coast, Rectangle scholomance) : base(
+    Faction secondaryPlagueFaction, Rectangle deathknell,Rectangle scholomance) : base(
     "Plague of Undeath",
     "The Cult of the Damned is prepared to unleash a devastating zombifying plague across the lands of Lordaeron.",
     @"ReplaceableTextures\CommandButtons\BTNPlagueBarrel.blp")
@@ -54,7 +53,6 @@ public sealed class QuestPlague : QuestData
     AddObjective(new ObjectiveTurn(8));
     _deathknellUnits = deathknell.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
     _scholomanceUnits = scholomance.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
-    _coastUnits = coast.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
     Global = true;
     ResearchId = UPGRADE_R009_QUEST_COMPLETED_PLAGUE_OF_UNDEATH;
   }
@@ -90,7 +88,6 @@ public sealed class QuestPlague : QuestData
       RefundSystem.RefundEnemyStructuresInRect(
         p,
         Regions.DeathknellUnlock,
-        Regions.StratholmeScourgeBase,
         Regions.CaerDarrow
       );
     }
@@ -115,7 +112,6 @@ public sealed class QuestPlague : QuestData
   private void RescueBases(Faction completingFaction)
   {
     completingFaction.Player.RescueGroup(_deathknellUnits);
-    completingFaction.Player.RescueGroup(_coastUnits);
     completingFaction.Player.RescueGroup(_scholomanceUnits);
   }
 
@@ -129,10 +125,6 @@ public sealed class QuestPlague : QuestData
         new ScourgeInvasionChoice(Regions.ScholoInvasion, Loc.Get("Scholomance"))
         {
           AttackTarget = new Point(Regions.SkullRetrieval.Center.X, Regions.SkullRetrieval.Center.Y)
-        },
-        new ScourgeInvasionChoice(Regions.StrathInvasion, Loc.Get("Stratholme"))
-        {
-          AttackTarget = new Point(Regions.StrathAttackTarget.Center.X, Regions.StrathAttackTarget.Center.Y)
         },
         new ScourgeInvasionChoice(Regions.DeathknellUnlock, Loc.Get("Deathknell"))
         {

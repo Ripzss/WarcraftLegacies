@@ -24,7 +24,7 @@ public sealed class QuestOrgrimmar : QuestData
     AddObjective(new ObjectiveResearch(RequiredResearchId, UNIT_O02S_FORTRESS_WARSONG_T3));
     AddObjective(new ObjectiveExpire(13, Title));
     AddObjective(new ObjectiveSelfExists());
-    ResearchId = UPGRADE_R05R_QUEST_COMPLETED_TO_TAME_A_LAND;
+    ResearchId = UPGRADE_MS03_QUEST_COMPLETED_TO_TAME_A_LAND;
     _rescueUnits = rescueRect.PrepareUnitsForRescue(RescuePreparationMode.HideAll);
     _rockGroups = new List<RockGroup>();
     RegisterRockGroups();
