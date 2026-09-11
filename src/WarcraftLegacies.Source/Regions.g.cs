@@ -232,7 +232,6 @@ public static class Regions
   public static Rectangle ScholomanceAmbient1 { get; set; } = new Rectangle(13728f, 7072f, 16096f, 8416f);
   public static Rectangle ScholomanceAmbient2 { get; set; } = new Rectangle(12128f, 5440f, 16224f, 7072f);
   public static Rectangle ScholomanceAmbient3 { get; set; } = new Rectangle(11200f, 7072f, 13728f, 7840f);
-  public static Rectangle SentDraeSharedStartPos { get; set; } = new Rectangle(-21216f, 7808f, -20192f, 8416f);
   public static Rectangle SentinelTowerAmbient { get; set; } = new Rectangle(5696f, -17664f, 8672f, -14304f);
   public static Rectangle ShadowfangAmbient { get; set; } = new Rectangle(4480f, 2784f, 8544f, 8320f);
   public static Rectangle ShadowfangUnlock { get; set; } = new Rectangle(4800f, 3040f, 7680f, 4736f);
@@ -275,7 +274,7 @@ public static class Regions
   public static Rectangle StrathAttackTarget { get; set; } = new Rectangle(15104f, 12864f, 15392f, 13152f);
   public static Rectangle StratholmeAmbient { get; set; } = new Rectangle(12608f, 11136f, 16288f, 15136f);
   public static Rectangle StratholmeShipyard { get; set; } = new Rectangle(13696f, 7232f, 20128f, 11712f);
-  public static Rectangle StratholmeUnlock { get; set; } = new Rectangle(12640f, 10912f, 16320f, 14848f);
+  public static Rectangle StratholmeUnlock { get; set; } = new Rectangle(12448f, 10848f, 16128f, 14784f);
   public static Rectangle Stratholmeunlock2 { get; set; } = new Rectangle(10464f, 11936f, 12768f, 15072f);
   public static Rectangle Stromgarde { get; set; } = new Rectangle(12896f, 192f, 15232f, 1632f);
   public static Rectangle Stromwind_antiship { get; set; } = new Rectangle(7968f, -12768f, 11520f, -9344f);

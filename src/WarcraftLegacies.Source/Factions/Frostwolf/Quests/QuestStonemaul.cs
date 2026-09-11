@@ -22,7 +22,7 @@ public sealed class QuestStonemaul : QuestData
     AddObjective(new ObjectiveExpire(8, Title));
     AddObjective(new ObjectiveSelfExists());
 
-    ResearchId = UPGRADE_R032_QUEST_COMPLETED_THE_DARKSPEAR_TROLLS;
+    ResearchId = UPGRADE_R05R_QUEST_COMPLETED_THE_STONEMAUL;
 
     _rescueUnits = rescueRect.PrepareUnitsForRescue(RescuePreparationMode.HideNonStructures);
   }
