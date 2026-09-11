@@ -1,4 +1,5 @@
 ﻿using MacroTools.Factions;
+using MacroTools.Legends;
 using MacroTools.Localization;
 using MacroTools.Quests;
 using WarcraftLegacies.Source.Objectives.LegendBased;
@@ -15,11 +16,11 @@ public sealed class QuestKillThunderBluff : QuestData
   /// <summary>
   /// Initializes a new instance of the <see cref="QuestSentinelsKillCthun"/> class.
   /// </summary>
-  public QuestKillThunderBluff() : base("The Planerunners",
+  public QuestKillThunderBluff(Capital ThunderBluff) : base("The Planerunners",
     "The Tauren have joined up with the Horde. They need to be ridden from the surface of Kalimdor.",
     @"ReplaceableTextures\CommandButtons\BTNCthunIcon.blp")
   {
-    AddObjective(new ObjectiveCapitalDead(AllLegends.Frostwolf.ThunderBluff));
+    AddObjective(new ObjectiveControlCapital(ThunderBluff, false));
     ResearchId = UPGRADE_MD56_QUEST_COMPLETED_THE_PLANERUNNERS;
 
   }

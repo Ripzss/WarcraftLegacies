@@ -72,7 +72,7 @@ public sealed class SentinelsFaction : Faction
     StartingQuest = startquest;
     AddQuest(new QuestAstranaar(new List<Rectangle> { Regions.AstranaarUnlock, Regions.AuberdineUnlock }));
     AddQuest(new QuestKillOrgrimmar());
-    AddQuest(new QuestKillThunderBluff());
+    AddQuest(new QuestKillThunderBluff(AllLegends.Frostwolf.ThunderBluff));
     AddQuest(new QuestScepterOfTheQueenSentinels(Regions.TheAthenaeum, AllLegends.Frostwolf.StonemaulKeep));
     AddQuest(new QuestVaultoftheWardens(AllLegends.Sentinels.Maiev, AllLegends.Sentinels.VaultOfTheWardens));
     AddQuest(new QuestExtractSunwellVial(AllLegends.Quel.Sunwell, Artifacts.SunwellVial));
